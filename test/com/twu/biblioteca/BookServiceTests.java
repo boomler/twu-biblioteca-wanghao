@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.List;
+
 public class BookServiceTests {
     private Book[] myBooks;
 
@@ -17,6 +19,7 @@ public class BookServiceTests {
                 new Book(2,"book01", "wang", LocalDate.of(2015, 12, 11)),
                 new Book(3,"book01", "wang", LocalDate.of(2014, 12, 1))
         };
+        
     }
     @Test
     public void getAllBookTest() {
@@ -45,6 +48,19 @@ public class BookServiceTests {
         BookRepository bookRespository = new BookRepository(myBooks);
         boolean checkResult = new BookService(bookRespository).checkOutBook(checkoutBookId);
         Assert.assertTrue(checkResult);
+        Assert.assertFalse(myBooks[2].getIsAvaliable());
+    }
+
+    @Test
+    public void returnBookSuccessfullyTest() {
+        int returnBookId = myBooks[2].getId();
+        myBooks[2].setAvaliable(false);
+        System.out.println(myBooks[2]);
+        System.out.println(myBooks[2].getIsAvaliable());
+        BookRepository bookRepository = new BookRepository(myBooks);
+        boolean returnResult = new BookService(bookRepository).returnBook(returnBookId);
+//        Assert.assertTrue(returnResult);
+        Assert.assertTrue(myBooks[2].getIsAvaliable());
     }
 
 }

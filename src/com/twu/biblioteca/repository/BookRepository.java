@@ -1,9 +1,8 @@
 package com.twu.biblioteca.repository;
 
 import com.twu.biblioteca.Book;
-
-import javax.management.OperationsException;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class BookRepository {
     private Book[] bookList;
@@ -14,15 +13,16 @@ public class BookRepository {
     }
 
     public  Book[] getAll() {
-         return Arrays.stream(bookList).filter(book -> book.getIsAvaliable()).toArray(Book[]::new);
+         return Stream.of(bookList).filter(book -> book.getIsAvaliable()).toArray(Book[]::new);
     }
 
-    public void updateAvaliableStatus(int bookId, boolean IsAvaliable) {
-        for(Book book: bookList) {
-            if(book.getId() == bookId){
+    public boolean updateAvaliableStatus(int bookId, boolean IsAvaliable) {
+        for(Book book: bookList){
+            if(book.getId() == bookId && book.getIsAvaliable() == !IsAvaliable) {
                 book.setAvaliable(IsAvaliable);
-                return;
+                return true;
             }
         }
+        return false;
     }
 }

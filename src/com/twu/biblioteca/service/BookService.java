@@ -3,8 +3,6 @@ package com.twu.biblioteca.service;
 import com.twu.biblioteca.Book;
 import com.twu.biblioteca.repository.BookRepository;
 
-import java.util.stream.Stream;
-
 public class BookService {
     public BookRepository bookRespository;
     public BookService(BookRepository bookRepository) {
@@ -21,13 +19,26 @@ public class BookService {
         return bookListStr;
     }
     public boolean checkOutBook(int bookId) {
-        boolean hasMatched = Stream.of(this.bookRespository.getAll())
-                .anyMatch(book -> book.getId() == bookId && book.getIsAvaliable() == true);
-        if(!hasMatched){
-            System.out.println("That book is not available.");
+        boolean updateResult = bookRespository.updateAvaliableStatus(bookId, false);
+        if(!updateResult) {
+            System.out.println("That book is not avaliable");
             return false;
+        } else {
+            System.out.println("Thank you! Enjoy the book");
+            return true;
         }
-        this.bookRespository.updateAvaliableStatus(bookId, false);
-        return true;
+
+    }
+
+    public boolean returnBook(int bookId) {
+        boolean updateResult = bookRespository.updateAvaliableStatus(bookId, true);
+        if(!updateResult) {
+            System.out.println("That is not a valid book to return.");
+            return false;
+        } else {
+            System.out.println("Thank you for returning the book.");
+            return true;
+        }
+
     }
 }
