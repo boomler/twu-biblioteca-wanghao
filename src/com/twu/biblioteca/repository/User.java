@@ -8,13 +8,15 @@ public class User {
     private String name;
     private String password;
     private String phoneNumber;
+    private String libraryNumber;
 
-    public User(String email, String address, String name, String password, String phoneNumber) {
+    public User(String email, String address, String name, String password, String phoneNumber, String libraryNumber) {
         this.email = email;
         this.address = address;
         this.name = name;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.libraryNumber = libraryNumber;
     }
 
     public String getName() {
@@ -27,5 +29,9 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getLibraryNumber() {
+        return libraryNumber;
     }
 }

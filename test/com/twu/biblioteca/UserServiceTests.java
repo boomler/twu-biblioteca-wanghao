@@ -2,34 +2,31 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.repository.User;
 import com.twu.biblioteca.repository.UserRepository;
+import com.twu.biblioteca.service.UserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class UserServiceTests {
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Before
     public void setup() {
         User[] users = new User[] {
-                new User("222@hotmail.com", "Beijing", "wang", "1234", "18123")
+                new User("222@hotmail.com", "Beijing", "wang", "1234", "18123", "user-001")
         };
-        userRepository = new UserRepository(users);
+        userService = new UserService(new UserRepository(users));
     }
 
     @Test
     public void testCheckInvalidUser() {
-        User checkResult = userRepository.check("XXX", "ss");
-        Assert.assertNull(checkResult);
+        boolean checkResult = userService.login("XXX", "ss");
+        Assert.assertFalse(checkResult);
     }
 
     @Test
     public void testCheckValidUser() {
-        User expectedUser = new User("222@hotmail.com", "Beijing", "wang", "1234", "18123");
-        User checkResult = userRepository.check("wang", "1234");
-        Assert.assertEquals(expectedUser.getName(), checkResult.getName());
-        Assert.assertEquals(expectedUser.getPassword(), checkResult.getPassword());
-        Assert.assertEquals(expectedUser.getEmail(), checkResult.getEmail());
+        boolean checkResult = userService.login("user-001", "1234");
+        Assert.assertTrue(checkResult);
     }
-
 }

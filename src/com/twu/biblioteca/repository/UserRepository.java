@@ -9,8 +9,8 @@ public class UserRepository {
         this.users = users;
     }
 
-    public User check(String name, String password) {
-        User[] matchedUsers = Stream.of(users).filter(u -> name == u.getName() && password == u.getPassword()).toArray(User[]::new);
+    public User find(String libraryNumber, String password) {
+        User[] matchedUsers = Stream.of(users).filter(u -> libraryNumber == u.getLibraryNumber() && password == u.getPassword()).toArray(User[]::new);
         if(matchedUsers.length == 0){
             return null;
         } else {
