@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.repository.Book;
 import com.twu.biblioteca.repository.BookRepository;
 import com.twu.biblioteca.service.BookService;
 import org.junit.Assert;
@@ -7,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class BookServiceTests {
     private Book[] myBooks;
@@ -32,6 +32,7 @@ public class BookServiceTests {
         String expectBooksStr = "id: 3, name: book01, author: wang, publishTIme: 2014-12-01\n";
         Assert.assertEquals(expectBooksStr, bookService.getAllBook());
     }
+
     @Test
     public void checkoutBookFailTest() {
         myBooks[2].setAvaliable(false);
@@ -39,9 +40,8 @@ public class BookServiceTests {
         BookRepository bookRespository = new BookRepository(myBooks);
         boolean checkResult = new BookService(bookRespository).checkOutBook(checkoutBookId);
         Assert.assertFalse(checkResult);
-
-
     }
+
     @Test
     public void checkoutBookSuccessTest() {
         int checkoutBookId = myBooks[2].getId();

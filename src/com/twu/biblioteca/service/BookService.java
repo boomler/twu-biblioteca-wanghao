@@ -1,6 +1,6 @@
 package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.Book;
+import com.twu.biblioteca.repository.Book;
 import com.twu.biblioteca.repository.BookRepository;
 
 public class BookService {

@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.menu.MenuList;
-import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.repository.Operations;
+import com.twu.biblioteca.service.MenuService;
 import com.twu.biblioteca.service.GoodByService;
 import com.twu.biblioteca.service.WelcomeService;
 
@@ -9,12 +9,12 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         WelcomeService.sayWelcome();
-        MenuList menu = new MenuList();
+        MenuService menu = new MenuService();
         menu.excuse("list books");
-        menu.listMenu();
         while(true) {
+            menu.listMenu();
             String operation = menu.choose();
-            if(operation == "quit") {
+            if(operation == Operations.QUIT) {
                 GoodByService.sayGoodBye();
                 return;
             }
