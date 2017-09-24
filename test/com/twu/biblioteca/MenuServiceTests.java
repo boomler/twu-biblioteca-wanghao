@@ -22,14 +22,16 @@ public class MenuServiceTests {
         Assert.assertEquals(Operations.LISTNOOKS, menuRepository.getOperation(1));
         Assert.assertEquals(Operations.CHECKOUTBOOK, menuRepository.getOperation(2));
         Assert.assertEquals(Operations.RETURNBOOK, menuRepository.getOperation(3));
-        Assert.assertEquals(Operations.QUIT, menuRepository.getOperation(4));
+        Assert.assertEquals(Operations.LISTMOVIES, menuRepository.getOperation(4));
+        Assert.assertEquals(Operations.QUIT, menuRepository.getOperation(5));
     }
     @Test
     public void getMenusListTest() {
         String expectedMenu = "1: list books\n" +
                 "2: checkout book\n" +
                 "3: return book\n" +
-                "4: quit\n";
+                "4: list movies\n" +
+                "5: quit\n";
         Assert.assertEquals(expectedMenu, menuRepository.getAll());
     }
 }

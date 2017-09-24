@@ -11,7 +11,8 @@ public class MenuRepository {
             this.menus.put(1, Operations.LISTNOOKS);
             this.menus.put(2, Operations.CHECKOUTBOOK);
             this.menus.put(3, Operations.RETURNBOOK);
-            this.menus.put(4, Operations.QUIT);
+            this.menus.put(4, Operations.LISTMOVIES);
+            this.menus.put(5, Operations.QUIT);
     }
 
     public String getAll() {
