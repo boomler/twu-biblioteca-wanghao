@@ -27,4 +27,8 @@ public class Movie {
                 "; year: " + year +
                 "\n";
     }
+
+    public String getName() {
+        return name;
+    }
 }
