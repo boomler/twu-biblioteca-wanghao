@@ -49,8 +49,10 @@ public class MenuService {
                 bookService.returnBook(returnBookId);
                 break;
             case Operations.CHECKOUTBOOK:
-                int checkoutBookId = new Scanner(System.in).nextInt();
-                bookService.checkOutBook(checkoutBookId);
+                bookService.checkOutBook(getInputId("book"));
+                break;
+            case Operations.CHECKOUTMOVIE:
+                movieService.checkOutMovie(getInputId("movie"));
                 break;
             case Operations.LISTMOVIES:
                 System.out.println(movieService.getAllMovie());
@@ -58,5 +60,10 @@ public class MenuService {
             default: System.out.println("Select a valid option!");
 
         }
+    }
+    private int getInputId(String type) {
+        System.out.print("Please input " + type + " number:");
+        int id = new Scanner(System.in).nextInt();
+        return id;
     }
 }

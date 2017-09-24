@@ -7,4 +7,5 @@ public class Operations {
     public static final String LISTMOVIES = "list movies";
     public static final String QUIT = "quit";
     public static final String INVALID = "invalid choice";
+    public static final String CHECKOUTMOVIE = "checkout movie";
 }

@@ -13,8 +13,7 @@ public class MovieRepository {
     }
 
     public boolean updateAvaliableStatus(int movieId, boolean IsAvaliable) {
-        for(Movie movie: movieList){
-            System.out.println(movie.toString() + movie.getIsAvaliable());
+        for(Movie movie: movieList) {
             if(movie.getId() == movieId && movie.getIsAvaliable() == !IsAvaliable) {
                 movie.setAvaliable(IsAvaliable);
                 return true;
