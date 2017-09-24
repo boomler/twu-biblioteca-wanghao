@@ -18,4 +18,16 @@ public class MovieService {
         }
         return movieListStr;
     }
+
+
+    public boolean checkOutMovie(int movieId) {
+        boolean updateResult = movieRespository.updateAvaliableStatus(movieId, false);
+        if(!updateResult) {
+            System.out.println("That movie is not avaliable");
+            return false;
+        } else {
+            System.out.println("Thank you! Enjoy the movie");
+            return true;
+        }
+    }
 }

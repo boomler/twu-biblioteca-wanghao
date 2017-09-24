@@ -6,9 +6,12 @@ public class Movie {
     private int rate;
     private String year;
     public boolean isAvaliable;
+    private int id;
+    private boolean avaliable;
 
-    public Movie(String name, String director, int rate, String year) {
+    public Movie(int id, String name, String director, int rate, String year) {
         this.name = name;
+        this.id = id;
         this.director = director;
         this.rate = rate;
         this.year = year;
@@ -30,5 +33,17 @@ public class Movie {
 
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public boolean getIsAvaliable() {
+        return isAvaliable;
+    }
+
+    public boolean isAvaliable() {
+        return avaliable;
     }
 }

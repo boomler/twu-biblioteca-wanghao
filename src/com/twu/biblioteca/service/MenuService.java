@@ -18,8 +18,8 @@ public class MenuService {
          };
          bookService = new BookService(new BookRepository(myBooks));
          Movie[] movies = new Movie[] {
-                new Movie("three idots", "director1", 3,"2017"),
-                new Movie("a movie", "director2", 0,"2017")
+                new Movie(1, "three idots", "director1", 3,"2017"),
+                new Movie(2, "a movie", "director2", 0,"2017")
          };
          movieService = new MovieService(new MovieRepository(movies));
          menuRepository = new MenuRepository();
