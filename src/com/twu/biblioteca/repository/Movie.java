@@ -25,7 +25,7 @@ public class Movie {
     @Override
     public String toString() {
         return  "id: " + id +
-                "; ßname: " + name +
+                "; name: " + name +
                 "; director: " + director +
                 "; rate: " + (rate > 0 ? rate: "unrated") +
                 "; year: " + year +

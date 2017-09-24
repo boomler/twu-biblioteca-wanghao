@@ -23,7 +23,8 @@ public class MenuServiceTests {
         Assert.assertEquals(Operations.CHECKOUTBOOK, menuRepository.getOperation(2));
         Assert.assertEquals(Operations.RETURNBOOK, menuRepository.getOperation(3));
         Assert.assertEquals(Operations.LISTMOVIES, menuRepository.getOperation(4));
-        Assert.assertEquals(Operations.QUIT, menuRepository.getOperation(5));
+        Assert.assertEquals(Operations.CHECKOUTMOVIE, menuRepository.getOperation(5));
+        Assert.assertEquals(Operations.QUIT, menuRepository.getOperation(6));
     }
     @Test
     public void getMenusListTest() {
@@ -31,7 +32,8 @@ public class MenuServiceTests {
                 "2: checkout book\n" +
                 "3: return book\n" +
                 "4: list movies\n" +
-                "5: quit\n";
+                "5: checkout movie\n" +
+                "6: quit\n";
         Assert.assertEquals(expectedMenu, menuRepository.getAll());
     }
 }

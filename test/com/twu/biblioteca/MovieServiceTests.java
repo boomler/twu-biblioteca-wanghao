@@ -26,15 +26,15 @@ public class MovieServiceTests {
     }
     @Test
     public void movieToStringTest() {
-        Assert.assertEquals("name: three idots; director: director1; rate: 3; year: 2017\n", movies[0].toString());
-        Assert.assertEquals("name: a movie; director: director2; rate: unrated; year: 2017\n", movies[1].toString());
+        Assert.assertEquals("id: 1; name: three idots; director: director1; rate: 3; year: 2017\n", movies[0].toString());
+        Assert.assertEquals("id: 2; name: a movie; director: director2; rate: unrated; year: 2017\n", movies[1].toString());
     }
     @Test
     public void getAvaliablemoviesTest() {
         movies[0].setAvaliable(false);
         Movie[] allAvaliable = movieRepository.getAll();
         Assert.assertEquals(1, allAvaliable.length);
-        Assert.assertEquals("name: a movie; director: director2; rate: unrated; year: 2017\n", movieService.getAllMovie());
+        Assert.assertEquals("id: 2; name: a movie; director: director2; rate: unrated; year: 2017\n", movieService.getAllMovie());
     }
 
     @Test
