@@ -1,8 +1,6 @@
 package com.twu.biblioteca.service;
 import com.twu.biblioteca.repository.*;
-import com.twu.biblioteca.service.BookService;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class MenuService {
@@ -11,18 +9,9 @@ public class MenuService {
     private MovieService movieService;
 
     public MenuService() {
-         Book[] myBooks = new Book[] {
-                 new Book(1,"book01", "wang", LocalDate.of(2017, 12, 23)),
-                 new Book(2,"book01", "wang", LocalDate.of(12,2,1)),
-                 new Book(3,"book01", "wang", LocalDate.of(2016,2,2))
-         };
-         bookService = new BookService(new BookRepository(myBooks));
-         Movie[] movies = new Movie[] {
-                new Movie(1, "three idots", "director1", 3,"2017"),
-                new Movie(2, "a movie", "director2", 0,"2017")
-         };
-         movieService = new MovieService(new MovieRepository(movies));
+         bookService = new BookService();
          menuRepository = new MenuRepository();
+         movieService = new MovieService();
      }
 
     public void listMenu() {
@@ -32,9 +21,8 @@ public class MenuService {
     }
 
     public String choose() {
-        Scanner in = new Scanner(System.in);
-        int s = in.nextInt();
-        String operation = menuRepository.getOperation(s);
+        int operationId = getId("operation");
+        String operation = menuRepository.getOperation(operationId);
         System.out.println("Your choose is : `"+ operation +"`");
         return operation;
     }
@@ -49,10 +37,10 @@ public class MenuService {
                 bookService.returnBook(returnBookId);
                 break;
             case Operations.CHECKOUTBOOK:
-                bookService.checkOutBook(getInputId("book"));
+                bookService.checkOutBook(getId("book"));
                 break;
             case Operations.CHECKOUTMOVIE:
-                movieService.checkOutMovie(getInputId("movie"));
+                movieService.checkOutMovie(getId("movie"));
                 break;
             case Operations.LISTMOVIES:
                 System.out.println(movieService.getAllMovie());
@@ -61,7 +49,7 @@ public class MenuService {
 
         }
     }
-    private int getInputId(String type) {
+    private int getId(String type) {
         System.out.print("Please input " + type + " number:");
         int id = new Scanner(System.in).nextInt();
         return id;

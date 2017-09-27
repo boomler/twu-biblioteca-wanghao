@@ -5,6 +5,11 @@ import com.twu.biblioteca.repository.MovieRepository;
 
 public class MovieService {
     public MovieRepository movieRespository;
+
+    public MovieService() {
+        movieRespository = new MovieRepository();
+    }
+
     public MovieService(MovieRepository movieRepository) {
         this.movieRespository = movieRepository;
     }

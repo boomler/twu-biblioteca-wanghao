@@ -5,6 +5,11 @@ import com.twu.biblioteca.repository.BookRepository;
 
 public class BookService {
     public BookRepository bookRespository;
+
+    public BookService() {
+        bookRespository = new BookRepository();
+    }
+
     public BookService(BookRepository bookRepository) {
        this.bookRespository = bookRepository;
     }

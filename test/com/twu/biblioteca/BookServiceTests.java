@@ -55,12 +55,20 @@ public class BookServiceTests {
     public void returnBookSuccessfullyTest() {
         int returnBookId = myBooks[2].getId();
         myBooks[2].setAvaliable(false);
-        System.out.println(myBooks[2]);
-        System.out.println(myBooks[2].getIsAvaliable());
         BookRepository bookRepository = new BookRepository(myBooks);
         boolean returnResult = new BookService(bookRepository).returnBook(returnBookId);
-//        Assert.assertTrue(returnResult);
+        Assert.assertTrue(returnResult);
         Assert.assertTrue(myBooks[2].getIsAvaliable());
+    }
+    @Test
+    public void returnBookFailTest() {
+        int returnBookId = myBooks[2].getId();
+        myBooks[2].setAvaliable(true);
+        BookRepository bookRepository = new BookRepository(myBooks);
+        boolean returnResult = new BookService(bookRepository).returnBook(returnBookId);
+        Assert.assertFalse(returnResult);
+        Assert.assertTrue(myBooks[2].getIsAvaliable());
+
     }
 
 }

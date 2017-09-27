@@ -1,5 +1,7 @@
 package com.twu.biblioteca.repository;
 
+import com.twu.biblioteca.service.MovieService;
+
 import java.util.stream.Stream;
 
 public class MovieRepository {
@@ -8,6 +10,15 @@ public class MovieRepository {
     public MovieRepository(Movie[] movieList) {
         this.movieList = movieList;
     }
+
+    public MovieRepository() {
+
+        movieList = new Movie[] {
+                new Movie(1, "three idots", "director1", 3,"2017"),
+                new Movie(2, "a movie", "director2", 0,"2017")
+        };
+   }
+
     public Movie[] getAll() {
         return Stream.of(movieList).filter(movie -> movie.isAvaliable).toArray(Movie[]::new);
     }
