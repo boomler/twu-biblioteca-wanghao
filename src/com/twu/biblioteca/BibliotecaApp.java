@@ -3,12 +3,17 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.repository.Operations;
 import com.twu.biblioteca.service.MenuService;
 import com.twu.biblioteca.service.GoodByService;
+import com.twu.biblioteca.service.UserService;
 import com.twu.biblioteca.service.WelcomeService;
 
 public class BibliotecaApp {
 
     public static void main(String[] args) {
         WelcomeService.sayWelcome();
+        if(!new UserService().login()){
+            System.out.print("login failed");
+            return ;
+        }
         MenuService menu = new MenuService();
         menu.excuse("list books");
         while(true) {

@@ -1,7 +1,5 @@
 package com.twu.biblioteca.repository;
 
-import org.hamcrest.Matcher;
-
 public class User {
     private String email;
     private String address;
@@ -33,5 +31,12 @@ public class User {
 
     public String getLibraryNumber() {
         return libraryNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + name + ";" +
+                "address: " + address + ";" +
+                "phoneNumber: " + phoneNumber;
     }
 }

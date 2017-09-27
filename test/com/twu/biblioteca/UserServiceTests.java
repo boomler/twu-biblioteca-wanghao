@@ -9,24 +9,29 @@ import org.junit.Test;
 
 public class UserServiceTests {
     private UserService userService;
+    private UserRepository userRepository;
 
     @Before
     public void setup() {
         User[] users = new User[] {
                 new User("222@hotmail.com", "Beijing", "wang", "1234", "18123", "user-001")
         };
-        userService = new UserService(new UserRepository(users));
+        userRepository = new UserRepository(users);
+
     }
 
     @Test
     public void testCheckInvalidUser() {
-        boolean checkResult = userService.login("XXX", "ss");
-        Assert.assertFalse(checkResult);
+        User checkResult = userRepository.find("XXX", "ss");
+        Assert.assertNull(checkResult);
     }
 
     @Test
     public void testCheckValidUser() {
-        boolean checkResult = userService.login("user-001", "1234");
-        Assert.assertTrue(checkResult);
+        User expectedUser = new User("222@hotmail.com", "Beijing", "wang", "1234", "18123", "user-001");
+        User checkResult = userRepository.find("user-001", "1234");
+        Assert.assertEquals(expectedUser.getLibraryNumber(), checkResult.getLibraryNumber());
+        Assert.assertEquals(expectedUser.getPassword(), checkResult.getPassword());
+        Assert.assertEquals(expectedUser.getEmail(), checkResult.getEmail());
     }
 }

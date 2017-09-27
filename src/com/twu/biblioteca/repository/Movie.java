@@ -7,7 +7,6 @@ public class Movie {
     private String year;
     public boolean isAvaliable;
     private int id;
-    private boolean avaliable;
 
     public Movie(int id, String name, String director, int rate, String year) {
         this.name = name;
@@ -42,9 +41,5 @@ public class Movie {
 
     public boolean getIsAvaliable() {
         return isAvaliable;
-    }
-
-    public boolean isAvaliable() {
-        return avaliable;
     }
 }

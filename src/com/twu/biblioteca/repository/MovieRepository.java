@@ -9,7 +9,7 @@ public class MovieRepository {
         this.movieList = movieList;
     }
     public Movie[] getAll() {
-        return (Movie[]) Stream.of(movieList).filter(movie -> movie.isAvaliable).toArray(Movie[]::new);
+        return Stream.of(movieList).filter(movie -> movie.isAvaliable).toArray(Movie[]::new);
     }
 
     public boolean updateAvaliableStatus(int movieId, boolean IsAvaliable) {
